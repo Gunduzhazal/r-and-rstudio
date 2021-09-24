@@ -94,8 +94,3 @@ present[present$total == max(present$total),"year"]
 
 Rpubs => http://rpubs.com/gunduzhazal/813389
 
-Github => 
-
-
-
-
