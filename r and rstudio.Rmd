@@ -1,0 +1,101 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+HAZAL GUNDUZ
+
+Introduction to R and RStudio
+
+The RStudio Interface
+
+```{r}
+data('arbuthnot', package='openintro')
+```
+
+```{r install-packages, message=FALSE, eval=FALSE}
+install.packages("tidyverse")
+install.packages("openintro")
+```
+
+
+```{r}
+arbuthnot
+```
+
+```{r}
+arbuthnot$boys
+```
+1.What command would you use to extract just the counts of girls baptized? Try it!
+
+```{r}
+arbuthnot$girls
+```
+
+2.Is there an apparent trend in the number of girls baptized over the years? How would you describe it? (To ensure that your lab report is comprehensive, be sure to include the code needed to make the plot as well as your written interpretation.)
+
+=>There is a positive linear trend in the number of girls baptized over the years. The trend is positive which means each year more girls are being baptized than the previous year. Now, suppose we want to plot the total number of baptisms.
+
+```{r}
+5218 + 4683
+```
+
+```{r}
+arbuthnot$boys + arbuthnot$girls
+```
+
+3.Now, generate a plot of the proportion of boys born over time. What do you see?
+
+```{r}
+proporetion <- arbuthnot$boys / (arbuthnot$boys + arbuthnot$girls)
+plot(arbuthnot$year, proporetion, type = "l")
+```
+
+
+```{r}
+data('present', package='openintro')
+```
+
+4.What years are included in this data set? What are the dimensions of the data frame? What are the variable (column) names?
+
+```{r}
+present$year
+```
+
+```{r}
+range(present$year)
+dim(present)
+colnames(present)
+```
+5.How do these counts compare to Arbuthnot’s? Are they of a similar magnitude?
+
+=> They are not on a similar scale. Artuthnot data has 82 years data while preset usa data has only 63 years data.
+
+```{r}
+sapply(arbuthnot, range)
+sapply(present, range)
+```
+
+6.Make a plot that displays the proportion of boys born over time. What do you see? Does Arbuthnot’s observation about boys being born in greater proportion than girls hold up in the U.S.? Include the plot in your response. Hint: You should be able to reuse your code from Exercise 3 above, just replace the dataframe name.
+
+```{r}
+proporetion <- present$boys / (present$boys + present$girls)
+plot(present$year, proporetion, type = "l")
+```
+
+7.In what year did we see the most total number of births in the U.S.?
+
+```{r}
+present$total <- present$boys+present$girls
+present[present$total == max(present$total),"year"]
+```
+
+Rpubs => http://rpubs.com/gunduzhazal/813389
+
+Github => 
+
+
+
+
